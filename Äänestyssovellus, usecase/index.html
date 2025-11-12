@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Äänestyssovellus</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="login-container">
+        <h2>Kirjaudu sisään</h2>
+        <input type="text" id="username" placeholder="Käyttäjänimi">
+        <select id="role">
+            <option value="user">Käyttäjä</option>
+            <option value="admin">Ylläpitäjä</option>
+        </select>
+        <button id="login-btn">Kirjaudu</button>
+    </div>
+
+    <div id="app-container" class="hidden">
+        <header>
+            <h1>Äänestyssovellus</h1>
+            <div>
+                <span id="user-info"></span>
+                <button id="logout-btn">Kirjaudu ulos</button>
+            </div>
+        </header>
+
+        <main>
+            <section id="poll-list-section">
+                <h2>Äänestykset</h2>
+                <ul id="poll-list"></ul>
+            </section>
+
+            <section id="poll-detail-section" class="hidden">
+                <h2 id="poll-title"></h2>
+                <div id="poll-options"></div>
+                <button id="back-btn">Takaisin</button>
+            </section>
+
+            <section id="admin-section" class="hidden">
+                <h2>Luo uusi äänestys</h2>
+                <input type="text" id="new-poll-title" placeholder="Äänestyksen otsikko">
+                <textarea id="new-poll-options" placeholder="Vaihtoehdot (yksi per rivi)"></textarea>
+                <button id="create-poll-btn">Luo äänestys</button>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
