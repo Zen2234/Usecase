@@ -1,5 +1,7 @@
 const POLLS_KEY = 'polls';
 let polls = JSON.parse(localStorage.getItem(POLLS_KEY)) || [];
+const USERS_KEY = 'users';
+let users = JSON.parse(localStorage.getItem(USERS_KEY)) || [];
 
 let currentUser = null;
 let selectedPoll = null;
@@ -158,5 +160,6 @@ function deletePoll(index) {
 function savePolls() {
     localStorage.setItem(POLLS_KEY, JSON.stringify(polls));
 }
+
 
 
