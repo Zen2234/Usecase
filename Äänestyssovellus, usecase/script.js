@@ -20,19 +20,34 @@ document.getElementById('create-poll-btn').addEventListener('click', createPoll)
 
 function login() {
     const username = document.getElementById('username').value.trim();
+    const password = document.getElementById('password').value.trim();
     const role = document.getElementById('role').value;
-    if (!username) {
-        alert("Anna käyttäjänimi.");
+
+    if (!username || !password) {
+        alert("Täytä käyttäjänimi ja salasana.");
         return;
     }
 
-    currentUser = { username, role };
-    userInfo.textContent = `${username} (${role === 'admin' ? 'Ylläpitäjä' : 'Käyttäjä'})`;
+    let user = users.find(u => u.username === username);
+
+    if (!user) {
+        user = { username, password, role };
+        users.push(user);
+        localStorage.setItem(USERS_KEY, JSON.stringify(users));
+    } else {
+        if (user.password !== password) {
+            alert("Väärä salasana.");
+            return;
+        }
+    }
+    currentUser = user;
+
+    userInfo.textContent = `${user.username} (${user.role === 'admin' ? 'Ylläpitäjä' : 'Käyttäjä'})`;
 
     loginContainer.classList.add('hidden');
     appContainer.classList.remove('hidden');
 
-    if (role === 'admin') adminSection.classList.remove('hidden');
+    if (user.role === 'admin') adminSection.classList.remove('hidden');
     else adminSection.classList.add('hidden');
 
     renderPolls();
@@ -143,4 +158,5 @@ function deletePoll(index) {
 function savePolls() {
     localStorage.setItem(POLLS_KEY, JSON.stringify(polls));
 }
+
 
