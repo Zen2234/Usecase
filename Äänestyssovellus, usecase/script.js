@@ -111,16 +111,18 @@ function vote(pollIndex, optionIndex) {
 function createPoll() {
     const title = document.getElementById('new-poll-title').value.trim();
     const optionsText = document.getElementById('new-poll-options').value.trim();
-    polls.push({ title, options, votedUsers: [] });
-
 
     if (!title || !optionsText) {
         alert("Täytä otsikko ja vaihtoehdot.");
         return;
     }
 
-    const options = optionsText.split('\n').map(opt => ({ text: opt.trim(), votes: 0 }));
-    polls.push({ title, options });
+    const options = optionsText.split('\n').map(opt => ({
+        text: opt.trim(),
+        votes: 0
+    }));
+
+    polls.push({ title, options, votedUsers: [] });
     savePolls();
 
     document.getElementById('new-poll-title').value = '';
@@ -128,6 +130,7 @@ function createPoll() {
 
     renderPolls();
 }
+
 
 function deletePoll(index) {
     if (confirm("Haluatko varmasti poistaa tämän äänestyksen?")) {
@@ -140,3 +143,4 @@ function deletePoll(index) {
 function savePolls() {
     localStorage.setItem(POLLS_KEY, JSON.stringify(polls));
 }
+
