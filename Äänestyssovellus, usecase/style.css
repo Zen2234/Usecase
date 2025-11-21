@@ -1,12 +1,12 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
+    background-color: #a4a4a5;
     margin: 0;
     padding: 0;
 }
 
 header {
-    background-color: #0055a5;
+    background-color: #4b0a0a;
     color: white;
     padding: 10px 20px;
     display: flex;
@@ -34,14 +34,14 @@ h1, h2 {
 button {
     padding: 8px 12px;
     border: none;
-    background-color: #59a2e7;
+    background-color: #fa5b5b;
     color: white;
     border-radius: 4px;
     cursor: pointer;
 }
 
 button:hover {
-    background-color: #003f7d;
+    background-color: #690404;
 }
 
 input, textarea, select {
